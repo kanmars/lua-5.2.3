@@ -7,7 +7,7 @@
 
 #include <locale.h>
 #include <string.h>
-
+#include <stdio.h>
 #define llex_c
 #define LUA_CORE
 
@@ -400,19 +400,25 @@ static void read_string (LexState *ls, int del, SemInfo *seminfo) {
 
 static int llex (LexState *ls, SemInfo *seminfo) {
   luaZ_resetbuffer(ls->buff);
+  printf("  开始读取Token\n");
   for (;;) {
     switch (ls->current) {
       case '\n': case '\r': {  /* line breaks */
+		printf("    读取到的TOKEN为回车换行，跳过\n");
         inclinenumber(ls);
         break;
       }
       case ' ': case '\f': case '\t': case '\v': {  /* spaces */
+		printf("    读取到的TOKEN为空白字符，跳过\n");
         next(ls);
         break;
       }
       case '-': {  /* '-' or '--' (comment) */
         next(ls);
-        if (ls->current != '-') return '-';
+        if (ls->current != '-'){
+			printf("    读取到的TOKEN为减号\n");
+		   	return '-';
+		}
         /* else is a comment */
         next(ls);
         if (ls->current == '[') {  /* long comment? */
@@ -449,6 +455,7 @@ static int llex (LexState *ls, SemInfo *seminfo) {
         else { next(ls); return TK_LE; }
       }
       case '>': {
+		printf("    读取到的TOKEN为 > \n");
         next(ls);
         if (ls->current != '=') return '>';
         else { next(ls); return TK_GE; }
@@ -480,21 +487,31 @@ static int llex (LexState *ls, SemInfo *seminfo) {
       case '0': case '1': case '2': case '3': case '4':
       case '5': case '6': case '7': case '8': case '9': {
         read_numeral(ls, seminfo);
+		printf("    读取到的TOKEN为 数字 \n");
         return TK_NUMBER;
       }
       case EOZ: {
         return TK_EOS;
       }
       default: {
+		//对字符串，以及单字符进行处理，
+		//printf("lislalpha(ls->current), %c , %d \n", ls->current,lislalpha(ls->current));
         if (lislalpha(ls->current)) {  /* identifier or reserved word? */
+		  //printf("  -- is char\n");
           TString *ts;
           do {
+			//将ls-current储存到ls(LexState)->buff(Mbuffer)->buffer(char *)上
+			//如果大小不符，则增加缓存大小
             save_and_next(ls);
           } while (lislalnum(ls->current));
+		  printf("      string is %s \n",ls->buff->buffer);
           ts = luaX_newstring(ls, luaZ_buffer(ls->buff),
                                   luaZ_bufflen(ls->buff));
+		  //设置Token->seminfo->ts = ts
           seminfo->ts = ts;
           if (isreserved(ts))  /* reserved word? */
+			//如果是保留字，则(s)->tsv.extra 为0,则进入该分支
+			//对应的id为0-1+257 = 256
             return ts->tsv.extra - 1 + FIRST_RESERVED;
           else {
             return TK_NAME;
@@ -503,6 +520,8 @@ static int llex (LexState *ls, SemInfo *seminfo) {
         else {  /* single-char tokens (+ - / ...) */
           int c = ls->current;
           next(ls);
+		  //单字符，则直接返回c
+		  printf("   single char %c \n",c);
           return c;
         }
       }

@@ -17,7 +17,7 @@
 #include "lstate.h"
 #include "lzio.h"
 
-
+//尝试调用reader即getF函数，从z->data，即LoadF中读取LUAL_BUFFERSIZE长度数据
 int luaZ_fill (ZIO *z) {
   size_t size;
   lua_State *L = z->L;

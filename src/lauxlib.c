@@ -565,7 +565,7 @@ typedef struct LoadF {
   char buff[LUAL_BUFFERSIZE];  /* area for reading file */
 } LoadF;
 
-
+//传入参数为L, z->data, &size
 static const char *getF (lua_State *L, void *ud, size_t *size) {
   LoadF *lf = (LoadF *)ud;
   (void)L;  /* not used */

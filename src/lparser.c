@@ -6,7 +6,7 @@
 
 
 #include <string.h>
-
+#include <stdio.h>
 #define lparser_c
 #define LUA_CORE
 
@@ -603,11 +603,13 @@ static int block_follow (LexState *ls, int withuntil) {
 
 static void statlist (LexState *ls) {
   /* statlist -> { stat [`;'] } */
+  //函数返回非0,则可继续
   while (!block_follow(ls, 1)) {
     if (ls->t.token == TK_RETURN) {
       statement(ls);
       return;  /* 'return' must be last statement */
     }
+	printf("在statlist中执行一个代码块; \n");
     statement(ls);
   }
 }
@@ -1375,10 +1377,14 @@ static void test_then_block (LexState *ls, int *escapelist) {
   /* test_then_block -> [IF | ELSEIF] cond THEN block */
   BlockCnt bl;
   FuncState *fs = ls->fs;
-  expdesc v;
+  expdesc v;//条件表达式
   int jf;  /* instruction to skip 'then' code (if condition is false) */
+  printf("尝试读取下一个Token\n");//如果是if，则此处会取出表达式的第一个值
   luaX_next(ls);  /* skip IF or ELSEIF */
+  //尝试读取条件
+  printf("尝试读取条件表达式\n");
   expr(ls, &v);  /* read condition */
+  printf("检查下一个是否是then\n");
   checknext(ls, TK_THEN);
   if (ls->t.token == TK_GOTO || ls->t.token == TK_BREAK) {
     luaK_goiffalse(ls->fs, &v);  /* will jump to label if condition is true */
@@ -1525,20 +1531,25 @@ static void retstat (LexState *ls) {
   testnext(ls, ';');  /* skip optional semicolon */
 }
 
-
+//执行一个statement，一个statement为一个语句
 static void statement (LexState *ls) {
   int line = ls->linenumber;  /* may be needed for error messages */
+  //对ls->L->nCalls进行计数，并校验是否超出最大限度
   enterlevel(ls);
   switch (ls->t.token) {
     case ';': {  /* stat -> ';' (empty statement) */
+	  printf("       statement函数->;分支\n");
       luaX_next(ls);  /* skip ';' */
       break;
     }
     case TK_IF: {  /* stat -> ifstat */
+	  printf("       statement函数->if分支 start\n");
       ifstat(ls, line);
+	  printf("       statement函数->if分支 end\n");
       break;
     }
     case TK_WHILE: {  /* stat -> whilestat */
+	  printf("       statement函数->while分支\n");
       whilestat(ls, line);
       break;
     }
@@ -1602,23 +1613,27 @@ static void statement (LexState *ls) {
 ** upvalue named LUA_ENV
 */
 static void mainfunc (LexState *ls, FuncState *fs) {
+  //块计数,每当进入一个FuncState，则块+深入一层
   BlockCnt bl;
   expdesc v;
   open_func(ls, fs, &bl);
   fs->f->is_vararg = 1;  /* main function is always vararg */
   init_exp(&v, VLOCAL, 0);  /* create and... */
   newupvalue(fs, ls->envn, &v);  /* ...set environment upvalue */
+  //取得第一个字符
   luaX_next(ls);  /* read first token */
+  //进行循环处理
   statlist(ls);  /* parse main body */
   check(ls, TK_EOS);
   close_func(ls);
 }
 
-
+//传入参数为L,ZIO,Mbuffer,Dyndata,p->name为"@文件名称",c为第一个字符
 Closure *luaY_parser (lua_State *L, ZIO *z, Mbuffer *buff,
                       Dyndata *dyd, const char *name, int firstchar) {
   LexState lexstate;
   FuncState funcstate;
+  //创建一个主函数并且压入栈
   Closure *cl = luaF_newLclosure(L, 1);  /* create main closure */
   /* anchor closure (to avoid being collected) */
   setclLvalue(L, L->top, cl);
@@ -1628,7 +1643,9 @@ Closure *luaY_parser (lua_State *L, ZIO *z, Mbuffer *buff,
   lexstate.buff = buff;
   lexstate.dyd = dyd;
   dyd->actvar.n = dyd->gt.n = dyd->label.n = 0;
+  //对lexstate->buffer进行初始化等操作
   luaX_setinput(L, &lexstate, z, funcstate.f->source, firstchar);
+  //进入mainfunc，执行解析与执行
   mainfunc(&lexstate, &funcstate);
   lua_assert(!funcstate.prev && funcstate.nups == 1 && !lexstate.fs);
   /* all scopes should be correctly finished */

@@ -484,7 +484,7 @@ typedef struct Proto {
   int lastlinedefined;
   GCObject *gclist;
   lu_byte numparams;  /* number of fixed parameters */
-  lu_byte is_vararg;
+  lu_byte is_vararg;	//mainfunc中默认主FuncState该字段始终为1
   lu_byte maxstacksize;  /* maximum stack used by this function */
 } Proto;
 

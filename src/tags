@@ -3,7 +3,7 @@
 !_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
 !_TAG_PROGRAM_NAME	Exuberant Ctags	//
 !_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
-!_TAG_PROGRAM_VERSION	5.8	//
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
 ALL	Makefile	/^ALL= all$/;"	m
 ALLONES	lbitlib.c	22;"	d	file:
 ALL_A	Makefile	/^ALL_A= $(LUA_A)$/;"	m
@@ -48,8 +48,8 @@ Closure	lobject.h	/^} Closure;$/;"	t	typeref:union:Closure
 ClosureHeader	lobject.h	/^  ClosureHeader;$/;"	m	struct:CClosure
 ClosureHeader	lobject.h	/^  ClosureHeader;$/;"	m	struct:LClosure
 ClosureHeader	lobject.h	513;"	d
-CommonHeader	lobject.h	/^    CommonHeader;$/;"	m	struct:TString::__anon2
-CommonHeader	lobject.h	/^    CommonHeader;$/;"	m	struct:Udata::__anon3
+CommonHeader	lobject.h	/^    CommonHeader;$/;"	m	struct:TString::__anon3
+CommonHeader	lobject.h	/^    CommonHeader;$/;"	m	struct:Udata::__anon4
 CommonHeader	lobject.h	/^  CommonHeader;$/;"	m	struct:GCheader
 CommonHeader	lobject.h	/^  CommonHeader;$/;"	m	struct:Proto
 CommonHeader	lobject.h	/^  CommonHeader;$/;"	m	struct:Table
@@ -69,7 +69,7 @@ DumpHeader	ldump.c	/^static void DumpHeader(DumpState* D)$/;"	f	file:
 DumpInt	ldump.c	/^static void DumpInt(int x, DumpState* D)$/;"	f	file:
 DumpMem	ldump.c	26;"	d	file:
 DumpNumber	ldump.c	/^static void DumpNumber(lua_Number x, DumpState* D)$/;"	f	file:
-DumpState	ldump.c	/^} DumpState;$/;"	t	typeref:struct:__anon18	file:
+DumpState	ldump.c	/^} DumpState;$/;"	t	typeref:struct:__anon1	file:
 DumpString	ldump.c	/^static void DumpString(const TString* s, DumpState* D)$/;"	f	file:
 DumpUpvalues	ldump.c	/^static void DumpUpvalues(const Proto* f, DumpState* D)$/;"	f	file:
 DumpVar	ldump.c	27;"	d	file:
@@ -130,10 +130,10 @@ KGC_EMERGENCY	lstate.h	55;"	d
 KGC_GEN	lstate.h	56;"	d
 KGC_NORMAL	lstate.h	54;"	d
 L	lauxlib.h	/^  lua_State *L;$/;"	m	struct:luaL_Buffer
-L	ldump.c	/^ lua_State* L;$/;"	m	struct:__anon18	file:
+L	ldump.c	/^ lua_State* L;$/;"	m	struct:__anon1	file:
 L	llex.h	/^  struct lua_State *L;$/;"	m	struct:LexState	typeref:struct:LexState::lua_State
 L	lstrlib.c	/^  lua_State *L;$/;"	m	struct:MatchState	file:
-L	lundump.c	/^ lua_State* L;$/;"	m	struct:__anon10	file:
+L	lundump.c	/^ lua_State* L;$/;"	m	struct:__anon19	file:
 L	lzio.h	/^  lua_State *L;			\/* Lua state (for reader) *\/$/;"	m	struct:Zio
 LClosure	lobject.h	/^typedef struct LClosure {$/;"	s
 LClosure	lobject.h	/^} LClosure;$/;"	t	typeref:struct:LClosure
@@ -441,7 +441,7 @@ LoadMem	lundump.c	36;"	d	file:
 LoadNumber	lundump.c	/^static lua_Number LoadNumber(LoadState* S)$/;"	f	file:
 LoadS	lauxlib.c	/^typedef struct LoadS {$/;"	s	file:
 LoadS	lauxlib.c	/^} LoadS;$/;"	t	typeref:struct:LoadS	file:
-LoadState	lundump.c	/^} LoadState;$/;"	t	typeref:struct:__anon10	file:
+LoadState	lundump.c	/^} LoadState;$/;"	t	typeref:struct:__anon19	file:
 LoadString	lundump.c	/^static TString* LoadString(LoadState* S)$/;"	f	file:
 LoadUpvalues	lundump.c	/^static void LoadUpvalues(LoadState* S, Proto* f)$/;"	f	file:
 LoadVar	lundump.c	38;"	d	file:
@@ -639,7 +639,7 @@ SUPUNSIGNED	llimits.h	261;"	d
 SYSCFLAGS	Makefile	/^SYSCFLAGS=$/;"	m
 SYSLDFLAGS	Makefile	/^SYSLDFLAGS=$/;"	m
 SYSLIBS	Makefile	/^SYSLIBS=$/;"	m
-SemInfo	llex.h	/^} SemInfo;  \/* semantics information *\/$/;"	t	typeref:union:__anon9
+SemInfo	llex.h	/^} SemInfo;  \/* semantics information *\/$/;"	t	typeref:union:__anon2
 StkId	lobject.h	/^typedef TValue *StkId;  \/* index to stack elements *\/$/;"	t
 TK_AND	llex.h	/^  TK_AND = FIRST_RESERVED, TK_BREAK,$/;"	e	enum:RESERVED
 TK_BREAK	llex.h	/^  TK_AND = FIRST_RESERVED, TK_BREAK,$/;"	e	enum:RESERVED
@@ -676,29 +676,29 @@ TK_UNTIL	llex.h	/^  TK_RETURN, TK_THEN, TK_TRUE, TK_UNTIL, TK_WHILE,$/;"	e	enum:
 TK_WHILE	llex.h	/^  TK_RETURN, TK_THEN, TK_TRUE, TK_UNTIL, TK_WHILE,$/;"	e	enum:RESERVED
 TKey	lobject.h	/^typedef union TKey {$/;"	u
 TKey	lobject.h	/^} TKey;$/;"	t	typeref:union:TKey
-TMS	ltm.h	/^} TMS;$/;"	t	typeref:enum:__anon1
-TM_ADD	ltm.h	/^  TM_ADD,$/;"	e	enum:__anon1
-TM_CALL	ltm.h	/^  TM_CALL,$/;"	e	enum:__anon1
-TM_CONCAT	ltm.h	/^  TM_CONCAT,$/;"	e	enum:__anon1
-TM_DIV	ltm.h	/^  TM_DIV,$/;"	e	enum:__anon1
-TM_EQ	ltm.h	/^  TM_EQ,  \/* last tag method with `fast' access *\/$/;"	e	enum:__anon1
-TM_GC	ltm.h	/^  TM_GC,$/;"	e	enum:__anon1
-TM_INDEX	ltm.h	/^  TM_INDEX,$/;"	e	enum:__anon1
-TM_LE	ltm.h	/^  TM_LE,$/;"	e	enum:__anon1
-TM_LEN	ltm.h	/^  TM_LEN,$/;"	e	enum:__anon1
-TM_LT	ltm.h	/^  TM_LT,$/;"	e	enum:__anon1
-TM_MOD	ltm.h	/^  TM_MOD,$/;"	e	enum:__anon1
-TM_MODE	ltm.h	/^  TM_MODE,$/;"	e	enum:__anon1
-TM_MUL	ltm.h	/^  TM_MUL,$/;"	e	enum:__anon1
-TM_N	ltm.h	/^  TM_N		\/* number of elements in the enum *\/$/;"	e	enum:__anon1
-TM_NEWINDEX	ltm.h	/^  TM_NEWINDEX,$/;"	e	enum:__anon1
-TM_POW	ltm.h	/^  TM_POW,$/;"	e	enum:__anon1
-TM_SUB	ltm.h	/^  TM_SUB,$/;"	e	enum:__anon1
-TM_UNM	ltm.h	/^  TM_UNM,$/;"	e	enum:__anon1
+TMS	ltm.h	/^} TMS;$/;"	t	typeref:enum:__anon18
+TM_ADD	ltm.h	/^  TM_ADD,$/;"	e	enum:__anon18
+TM_CALL	ltm.h	/^  TM_CALL,$/;"	e	enum:__anon18
+TM_CONCAT	ltm.h	/^  TM_CONCAT,$/;"	e	enum:__anon18
+TM_DIV	ltm.h	/^  TM_DIV,$/;"	e	enum:__anon18
+TM_EQ	ltm.h	/^  TM_EQ,  \/* last tag method with `fast' access *\/$/;"	e	enum:__anon18
+TM_GC	ltm.h	/^  TM_GC,$/;"	e	enum:__anon18
+TM_INDEX	ltm.h	/^  TM_INDEX,$/;"	e	enum:__anon18
+TM_LE	ltm.h	/^  TM_LE,$/;"	e	enum:__anon18
+TM_LEN	ltm.h	/^  TM_LEN,$/;"	e	enum:__anon18
+TM_LT	ltm.h	/^  TM_LT,$/;"	e	enum:__anon18
+TM_MOD	ltm.h	/^  TM_MOD,$/;"	e	enum:__anon18
+TM_MODE	ltm.h	/^  TM_MODE,$/;"	e	enum:__anon18
+TM_MUL	ltm.h	/^  TM_MUL,$/;"	e	enum:__anon18
+TM_N	ltm.h	/^  TM_N		\/* number of elements in the enum *\/$/;"	e	enum:__anon18
+TM_NEWINDEX	ltm.h	/^  TM_NEWINDEX,$/;"	e	enum:__anon18
+TM_POW	ltm.h	/^  TM_POW,$/;"	e	enum:__anon18
+TM_SUB	ltm.h	/^  TM_SUB,$/;"	e	enum:__anon18
+TM_UNM	ltm.h	/^  TM_UNM,$/;"	e	enum:__anon18
 TString	lobject.h	/^typedef union TString {$/;"	u
 TString	lobject.h	/^} TString;$/;"	t	typeref:union:TString
 TValue	lobject.h	/^typedef struct lua_TValue TValue;$/;"	t	typeref:struct:lua_TValue
-TValuefields	lobject.h	/^    TValuefields;$/;"	m	struct:TKey::__anon6
+TValuefields	lobject.h	/^    TValuefields;$/;"	m	struct:TKey::__anon7
 TValuefields	lobject.h	/^  TValuefields;$/;"	m	struct:lua_TValue
 TValuefields	lobject.h	104;"	d
 TValuefields	lobject.h	296;"	d
@@ -720,22 +720,22 @@ UpVal	lobject.h	/^} UpVal;$/;"	t	typeref:struct:UpVal
 Upvaldesc	lobject.h	/^typedef struct Upvaldesc {$/;"	s
 Upvaldesc	lobject.h	/^} Upvaldesc;$/;"	t	typeref:struct:Upvaldesc
 VARBITS	lobject.h	39;"	d
-VCALL	lparser.h	/^  VCALL,	\/* info = instruction pc *\/$/;"	e	enum:__anon14
+VCALL	lparser.h	/^  VCALL,	\/* info = instruction pc *\/$/;"	e	enum:__anon10
 VERSION	lundump.c	236;"	d	file:
-VFALSE	lparser.h	/^  VFALSE,$/;"	e	enum:__anon14
-VINDEXED	lparser.h	/^  VINDEXED,	\/* t = table register\/upvalue; idx = index R\/K *\/$/;"	e	enum:__anon14
-VJMP	lparser.h	/^  VJMP,		\/* info = instruction pc *\/$/;"	e	enum:__anon14
-VK	lparser.h	/^  VK,		\/* info = index of constant in `k' *\/$/;"	e	enum:__anon14
-VKNUM	lparser.h	/^  VKNUM,	\/* nval = numerical value *\/$/;"	e	enum:__anon14
-VLOCAL	lparser.h	/^  VLOCAL,	\/* info = local register *\/$/;"	e	enum:__anon14
-VNIL	lparser.h	/^  VNIL,$/;"	e	enum:__anon14
-VNONRELOC	lparser.h	/^  VNONRELOC,	\/* info = result register *\/$/;"	e	enum:__anon14
+VFALSE	lparser.h	/^  VFALSE,$/;"	e	enum:__anon10
+VINDEXED	lparser.h	/^  VINDEXED,	\/* t = table register\/upvalue; idx = index R\/K *\/$/;"	e	enum:__anon10
+VJMP	lparser.h	/^  VJMP,		\/* info = instruction pc *\/$/;"	e	enum:__anon10
+VK	lparser.h	/^  VK,		\/* info = index of constant in `k' *\/$/;"	e	enum:__anon10
+VKNUM	lparser.h	/^  VKNUM,	\/* nval = numerical value *\/$/;"	e	enum:__anon10
+VLOCAL	lparser.h	/^  VLOCAL,	\/* info = local register *\/$/;"	e	enum:__anon10
+VNIL	lparser.h	/^  VNIL,$/;"	e	enum:__anon10
+VNONRELOC	lparser.h	/^  VNONRELOC,	\/* info = result register *\/$/;"	e	enum:__anon10
 VOID	luac.c	221;"	d	file:
-VRELOCABLE	lparser.h	/^  VRELOCABLE,	\/* info = instruction pc *\/$/;"	e	enum:__anon14
-VTRUE	lparser.h	/^  VTRUE,$/;"	e	enum:__anon14
-VUPVAL	lparser.h	/^  VUPVAL,       \/* info = index of upvalue in 'upvalues' *\/$/;"	e	enum:__anon14
-VVARARG	lparser.h	/^  VVARARG	\/* info = instruction pc *\/$/;"	e	enum:__anon14
-VVOID	lparser.h	/^  VVOID,	\/* no value *\/$/;"	e	enum:__anon14
+VRELOCABLE	lparser.h	/^  VRELOCABLE,	\/* info = instruction pc *\/$/;"	e	enum:__anon10
+VTRUE	lparser.h	/^  VTRUE,$/;"	e	enum:__anon10
+VUPVAL	lparser.h	/^  VUPVAL,       \/* info = index of upvalue in 'upvalues' *\/$/;"	e	enum:__anon10
+VVARARG	lparser.h	/^  VVARARG	\/* info = instruction pc *\/$/;"	e	enum:__anon10
+VVOID	lparser.h	/^  VVOID,	\/* no value *\/$/;"	e	enum:__anon10
 Value	lobject.h	/^typedef union Value Value;$/;"	t	typeref:union:Value
 Value	lobject.h	/^union Value {$/;"	u
 Vardesc	lparser.h	/^typedef struct Vardesc {$/;"	s
@@ -744,12 +744,12 @@ WHITE0BIT	lgc.h	87;"	d
 WHITE1BIT	lgc.h	88;"	d
 WHITEBITS	lgc.h	96;"	d
 XDIGITBIT	lctype.h	43;"	d
-Z	lundump.c	/^ ZIO* Z;$/;"	m	struct:__anon10	file:
+Z	lundump.c	/^ ZIO* Z;$/;"	m	struct:__anon19	file:
 ZIO	lzio.h	/^typedef struct Zio ZIO;$/;"	t	typeref:struct:Zio
 Zio	lzio.h	/^struct Zio {$/;"	s
 _FILE_OFFSET_BITS	liolib.c	14;"	d	file:
 _LARGEFILE_SOURCE	liolib.c	13;"	d	file:
-actvar	lparser.h	/^  } actvar;$/;"	m	struct:Dyndata	typeref:struct:Dyndata::__anon17
+actvar	lparser.h	/^  } actvar;$/;"	m	struct:Dyndata	typeref:struct:Dyndata::__anon13
 add_s	lstrlib.c	/^static void add_s (MatchState *ms, luaL_Buffer *b, const char *s,$/;"	f	file:
 add_value	lstrlib.c	/^static void add_value (MatchState *ms, luaL_Buffer *b, const char *s,$/;"	f	file:
 addbuff	lstate.c	87;"	d	file:
@@ -775,7 +775,7 @@ api_checkstackindex	lapi.c	51;"	d	file:
 api_checkvalidindex	lapi.c	49;"	d	file:
 api_incr_top	lapi.h	14;"	d
 arith_op	lvm.c	520;"	d	file:
-arr	lparser.h	/^    Vardesc *arr;$/;"	m	struct:Dyndata::__anon17
+arr	lparser.h	/^    Vardesc *arr;$/;"	m	struct:Dyndata::__anon13
 arr	lparser.h	/^  Labeldesc *arr;  \/* array *\/$/;"	m	struct:Labellist
 array	lobject.h	/^  TValue *array;  \/* array part *\/$/;"	m	struct:Table
 arrayindex	ltable.c	/^static int arrayindex (const TValue *key) {$/;"	f	file:
@@ -792,7 +792,7 @@ auxupvalue	ldblib.c	/^static int auxupvalue (lua_State *L, int get) {$/;"	f	file
 b	lauxlib.h	/^  char *b;  \/* buffer address *\/$/;"	m	struct:luaL_Buffer
 b	ldo.c	/^  luai_jmpbuf b;$/;"	m	struct:lua_longjmp	file:
 b	lobject.h	/^  int b;           \/* booleans *\/$/;"	m	union:Value
-b	lundump.c	/^ Mbuffer* b;$/;"	m	struct:__anon10	file:
+b	lundump.c	/^ Mbuffer* b;$/;"	m	struct:__anon19	file:
 b_and	lbitlib.c	/^static int b_and (lua_State *L) {$/;"	f	file:
 b_arshift	lbitlib.c	/^static int b_arshift (lua_State *L) {$/;"	f	file:
 b_extract	lbitlib.c	/^static int b_extract (lua_State *L) {$/;"	f	file:
@@ -808,7 +808,7 @@ b_shift	lbitlib.c	/^static int b_shift (lua_State *L, b_uint r, int i) {$/;"	f	f
 b_test	lbitlib.c	/^static int b_test (lua_State *L) {$/;"	f	file:
 b_uint	lbitlib.c	/^typedef lua_Unsigned b_uint;$/;"	t	file:
 b_xor	lbitlib.c	/^static int b_xor (lua_State *L) {$/;"	f	file:
-base	lstate.h	/^      StkId base;  \/* base for this function *\/$/;"	m	struct:CallInfo::__anon11::__anon12
+base	lstate.h	/^      StkId base;  \/* base for this function *\/$/;"	m	struct:CallInfo::__anon14::__anon15
 base_ci	lstate.h	/^  CallInfo base_ci;  \/* CallInfo for first level (C calling Lua) *\/$/;"	m	struct:lua_State
 base_funcs	lbaselib.c	/^static const luaL_Reg base_funcs[] = {$/;"	v	file:
 basehookcount	lstate.h	/^  int basehookcount;$/;"	m	struct:lua_State
@@ -834,7 +834,7 @@ buffreplace	llex.c	/^static void buffreplace (LexState *ls, char from, char to) 
 buffsize	lzio.h	/^  size_t buffsize;$/;"	m	struct:Mbuffer
 bvalue	lobject.h	165;"	d
 c	lobject.h	/^  CClosure c;$/;"	m	union:Closure
-c	lstate.h	/^    } c;$/;"	m	union:CallInfo::__anon11	typeref:struct:CallInfo::__anon11::__anon13
+c	lstate.h	/^    } c;$/;"	m	union:CallInfo::__anon14	typeref:struct:CallInfo::__anon14::__anon16
 cache	lobject.h	/^  union Closure *cache;  \/* last created closure with this prototype *\/$/;"	m	struct:Proto	typeref:union:Proto::Closure
 callTM	lvm.c	/^static void callTM (lua_State *L, const TValue *f, const TValue *p1,$/;"	f	file:
 call_binTM	lvm.c	/^static int call_binTM (lua_State *L, const TValue *p1, const TValue *p2,$/;"	f	file:
@@ -843,7 +843,7 @@ callallpendingfinalizers	lgc.c	/^static void callallpendingfinalizers (lua_State
 callhook	ldo.c	/^static void callhook (lua_State *L, CallInfo *ci) {$/;"	f	file:
 callstatus	lstate.h	/^  lu_byte callstatus;$/;"	m	struct:CallInfo
 cannot	luac.c	/^static void cannot(const char* what)$/;"	f	file:
-capture	lstrlib.c	/^  } capture[LUA_MAXCAPTURES];$/;"	m	struct:MatchState	typeref:struct:MatchState::__anon19	file:
+capture	lstrlib.c	/^  } capture[LUA_MAXCAPTURES];$/;"	m	struct:MatchState	typeref:struct:MatchState::__anon17	file:
 capture_to_close	lstrlib.c	/^static int capture_to_close (MatchState *ms) {$/;"	f	file:
 cast	llimits.h	93;"	d
 cast_byte	llimits.h	95;"	d
@@ -871,7 +871,7 @@ checkname	lparser.c	/^static void checkname (LexState *ls, expdesc *e) {$/;"	f	f
 checknext	lparser.c	/^static void checknext (LexState *ls, int c) {$/;"	f	file:
 checkoption	loslib.c	/^static const char *checkoption (lua_State *L, const char *conv, char *buff) {$/;"	f	file:
 checkrepeated	lparser.c	/^static void checkrepeated (FuncState *fs, Labellist *ll, TString *label) {$/;"	f	file:
-checkresults	lapi.c	880;"	d	file:
+checkresults	lapi.c	881;"	d	file:
 checktag	lobject.h	131;"	d
 checktag	lobject.h	363;"	d
 checktag	lobject.h	365;"	d
@@ -924,7 +924,7 @@ createsearcherstable	loadlib.c	/^static void createsearcherstable (lua_State *L)
 createstdfile	liolib.c	/^static void createstdfile (lua_State *L, FILE *f, const char *k,$/;"	f	file:
 createstrobj	lstring.c	/^static TString *createstrobj (lua_State *L, const char *str, size_t l,$/;"	f	file:
 ctb	lobject.h	64;"	d
-ctx	lstate.h	/^      int ctx;  \/* context info. in case of yields *\/$/;"	m	struct:CallInfo::__anon11::__anon13
+ctx	lstate.h	/^      int ctx;  \/* context info. in case of yields *\/$/;"	m	struct:CallInfo::__anon14::__anon16
 currIsNewline	llex.c	32;"	d	file:
 current	llex.h	/^  int current;  \/* current character (charint) *\/$/;"	m	struct:LexState
 currentline	ldebug.c	/^static int currentline (CallInfo *ci) {$/;"	f	file:
@@ -933,7 +933,7 @@ currentpc	ldebug.c	/^static int currentpc (CallInfo *ci) {$/;"	f	file:
 currentwhite	lstate.h	/^  lu_byte currentwhite;$/;"	m	struct:global_State
 d_	lobject.h	307;"	d
 d_	lobject.h	318;"	d
-data	ldump.c	/^ void* data;$/;"	m	struct:__anon18	file:
+data	ldump.c	/^ void* data;$/;"	m	struct:__anon1	file:
 data	lzio.h	/^  void* data;			\/* additional data *\/$/;"	m	struct:Zio
 db_debug	ldblib.c	/^static int db_debug (lua_State *L) {$/;"	f	file:
 db_gethook	ldblib.c	/^static int db_gethook (lua_State *L) {$/;"	f	file:
@@ -980,7 +980,7 @@ endpc	lobject.h	/^  int endpc;    \/* first point where variable is dead *\/$/;"
 enterblock	lparser.c	/^static void enterblock (FuncState *fs, BlockCnt *bl, lu_byte isloop) {$/;"	f	file:
 enterlevel	lparser.c	/^static void enterlevel (LexState *ls) {$/;"	f	file:
 entersweep	lgc.c	/^static int entersweep (lua_State *L) {$/;"	f	file:
-env	lobject.h	/^    struct Table *env;$/;"	m	struct:Udata::__anon3	typeref:struct:Udata::__anon3::Table
+env	lobject.h	/^    struct Table *env;$/;"	m	struct:Udata::__anon4	typeref:struct:Udata::__anon4::Table
 envn	llex.h	/^  TString *envn;  \/* environment variable name *\/$/;"	m	struct:LexState
 ephemeron	lstate.h	/^  GCObject *ephemeron;  \/* list of ephemeron tables (weak keys) *\/$/;"	m	struct:global_State
 eqshrstr	lstring.h	34;"	d
@@ -997,11 +997,11 @@ exp1	lparser.c	/^static int exp1 (LexState *ls) {$/;"	f	file:
 exp2reg	lcode.c	/^static void exp2reg (FuncState *fs, expdesc *e, int reg) {$/;"	f	file:
 expdesc	lparser.h	/^typedef struct expdesc {$/;"	s
 expdesc	lparser.h	/^} expdesc;$/;"	t	typeref:struct:expdesc
-expkind	lparser.h	/^} expkind;$/;"	t	typeref:enum:__anon14
+expkind	lparser.h	/^} expkind;$/;"	t	typeref:enum:__anon10
 explist	lparser.c	/^static int explist (LexState *ls, expdesc *v) {$/;"	f	file:
 expr	lparser.c	/^static void expr (LexState *ls, expdesc *v) {$/;"	f	file:
 exprstat	lparser.c	/^static void exprstat (LexState *ls) {$/;"	f	file:
-extra	lobject.h	/^    lu_byte extra;  \/* reserved words for short strings; "has hash" for longs *\/$/;"	m	struct:TString::__anon2
+extra	lobject.h	/^    lu_byte extra;  \/* reserved words for short strings; "has hash" for longs *\/$/;"	m	struct:TString::__anon3
 extra	lstate.h	/^  ptrdiff_t extra;$/;"	m	struct:CallInfo
 f	lauxlib.c	/^  FILE *f;  \/* file being read *\/$/;"	m	struct:LoadF	file:
 f	lauxlib.h	/^  FILE *f;  \/* stream (NULL for incompletely created streams) *\/$/;"	m	struct:luaL_Stream
@@ -1152,7 +1152,7 @@ has_E	lua.c	352;"	d	file:
 has_e	lua.c	351;"	d	file:
 has_i	lua.c	349;"	d	file:
 has_v	lua.c	350;"	d	file:
-hash	lobject.h	/^    unsigned int hash;$/;"	m	struct:TString::__anon2
+hash	lobject.h	/^    unsigned int hash;$/;"	m	struct:TString::__anon3
 hash	lstate.h	/^  GCObject **hash;$/;"	m	struct:stringtable
 hashboolean	ltable.c	54;"	d	file:
 hashmod	ltable.c	61;"	d	file:
@@ -1175,17 +1175,17 @@ i_ci	lua.h	/^  struct CallInfo *i_ci;  \/* active function *\/$/;"	m	struct:lua_
 i_key	lobject.h	/^  TKey i_key;$/;"	m	struct:Node
 i_val	lobject.h	/^  TValue i_val;$/;"	m	struct:Node
 idx	lobject.h	/^  lu_byte idx;  \/* index of upvalue (in stack or in outer function's list) *\/$/;"	m	struct:Upvaldesc
-idx	lparser.h	/^      short idx;  \/* index (R\/K) *\/$/;"	m	struct:expdesc::__anon15::__anon16
+idx	lparser.h	/^      short idx;  \/* index (R\/K) *\/$/;"	m	struct:expdesc::__anon11::__anon12
 idx	lparser.h	/^  short idx;  \/* variable index in stack *\/$/;"	m	struct:Vardesc
 ifstat	lparser.c	/^static void ifstat (LexState *ls, int line) {$/;"	f	file:
 inclinenumber	llex.c	/^static void inclinenumber (LexState *ls) {$/;"	f	file:
 incomplete	lua.c	/^static int incomplete (lua_State *L, int status) {$/;"	f	file:
 incr_top	ldo.h	20;"	d
 incstep	lgc.c	/^static void incstep (lua_State *L) {$/;"	f	file:
-ind	lparser.h	/^    } ind;$/;"	m	union:expdesc::__anon15	typeref:struct:expdesc::__anon15::__anon16
+ind	lparser.h	/^    } ind;$/;"	m	union:expdesc::__anon11	typeref:struct:expdesc::__anon11::__anon12
 index2addr	lapi.c	/^static TValue *index2addr (lua_State *L, int idx) {$/;"	f	file:
-info	lparser.h	/^    int info;  \/* for generic use *\/$/;"	m	union:expdesc::__anon15
-init	lstrlib.c	/^    const char *init;$/;"	m	struct:MatchState::__anon19	file:
+info	lparser.h	/^    int info;  \/* for generic use *\/$/;"	m	union:expdesc::__anon11
+init	lstrlib.c	/^    const char *init;$/;"	m	struct:MatchState::__anon17	file:
 init_exp	lparser.c	/^static void init_exp (expdesc *e, expkind k, int i) {$/;"	f	file:
 init_registry	lstate.c	/^static void init_registry (lua_State *L, global_State *g) {$/;"	f	file:
 initb	lauxlib.h	/^  char initb[LUAL_BUFFERSIZE];  \/* initial buffer *\/$/;"	m	struct:luaL_Buffer
@@ -1242,16 +1242,16 @@ jpc	lparser.h	/^  int jpc;  \/* list of pending jumps to `pc' *\/$/;"	m	struct:F
 jumponcond	lcode.c	/^static int jumponcond (FuncState *fs, expdesc *e, int cond) {$/;"	f	file:
 k	lobject.h	/^  TValue *k;  \/* constants used by the function *\/$/;"	m	struct:Proto
 k	lparser.h	/^  expkind k;$/;"	m	struct:expdesc
-k	lstate.h	/^      lua_CFunction k;  \/* continuation in case of yields *\/$/;"	m	struct:CallInfo::__anon11::__anon13
+k	lstate.h	/^      lua_CFunction k;  \/* continuation in case of yields *\/$/;"	m	struct:CallInfo::__anon14::__anon16
 keepinvariant	lgc.h	61;"	d
 keepinvariantout	lgc.h	68;"	d
 keyfromval	ltable.h	21;"	d
 kname	ldebug.c	/^static void kname (Proto *p, int pc, int c, const char **name) {$/;"	f	file:
-l	lobject.h	/^    } l;$/;"	m	union:UpVal::__anon4	typeref:struct:UpVal::__anon4::__anon5
+l	lobject.h	/^    } l;$/;"	m	union:UpVal::__anon5	typeref:struct:UpVal::__anon5::__anon6
 l	lobject.h	/^  LClosure l;$/;"	m	union:Closure
 l	lstate.c	/^  LX l;$/;"	m	struct:LG	file:
 l	lstate.c	/^  lua_State l;$/;"	m	struct:LX	file:
-l	lstate.h	/^    } l;$/;"	m	union:CallInfo::__anon11	typeref:struct:CallInfo::__anon11::__anon12
+l	lstate.h	/^    } l;$/;"	m	union:CallInfo::__anon14	typeref:struct:CallInfo::__anon14::__anon15
 l_G	lstate.h	/^  global_State *l_G;$/;"	m	struct:lua_State
 l_alloc	lauxlib.c	/^static void *l_alloc (void *ud, void *ptr, size_t osize, size_t nsize) {$/;"	f	file:
 l_d	llimits.h	/^union luai_Cast { double l_d; LUA_INT32 l_p[2]; };$/;"	m	union:luai_Cast
@@ -1309,10 +1309,10 @@ ldo_h	ldo.h	8;"	d
 ldump_c	ldump.c	9;"	d	file:
 leaveblock	lparser.c	/^static void leaveblock (FuncState *fs) {$/;"	f	file:
 leavelevel	lparser.c	337;"	d	file:
-left	lparser.c	/^  lu_byte left;  \/* left priority for each binary operator *\/$/;"	m	struct:__anon7	file:
-len	lobject.h	/^    size_t len;  \/* number of bytes *\/$/;"	m	struct:Udata::__anon3
-len	lobject.h	/^    size_t len;  \/* number of characters in string *\/$/;"	m	struct:TString::__anon2
-len	lstrlib.c	/^    ptrdiff_t len;$/;"	m	struct:MatchState::__anon19	file:
+left	lparser.c	/^  lu_byte left;  \/* left priority for each binary operator *\/$/;"	m	struct:__anon9	file:
+len	lobject.h	/^    size_t len;  \/* number of bytes *\/$/;"	m	struct:Udata::__anon4
+len	lobject.h	/^    size_t len;  \/* number of characters in string *\/$/;"	m	struct:TString::__anon3
+len	lstrlib.c	/^    ptrdiff_t len;$/;"	m	struct:MatchState::__anon17	file:
 level	lstrlib.c	/^  int level;  \/* total number of captures (finished or unfinished) *\/$/;"	m	struct:MatchState	file:
 lexerror	llex.c	/^static l_noret lexerror (LexState *ls, const char *msg, int token) {$/;"	f	file:
 lfunc_c	lfunc.c	10;"	d	file:
@@ -1970,7 +1970,7 @@ max_expand	lstrlib.c	/^static const char *max_expand (MatchState *ms, const char
 maxn	ltablib.c	/^static int maxn (lua_State *L) {$/;"	f	file:
 maxstacksize	lobject.h	/^  lu_byte maxstacksize;  \/* maximum stack used by this function *\/$/;"	m	struct:Proto
 memerrmsg	lstate.h	/^  TString *memerrmsg;  \/* memory-error message *\/$/;"	m	struct:global_State
-metatable	lobject.h	/^    struct Table *metatable;$/;"	m	struct:Udata::__anon3	typeref:struct:Udata::__anon3::Table
+metatable	lobject.h	/^    struct Table *metatable;$/;"	m	struct:Udata::__anon4	typeref:struct:Udata::__anon4::Table
 metatable	lobject.h	/^  struct Table *metatable;$/;"	m	struct:Table	typeref:struct:Table::Table
 min_expand	lstrlib.c	/^static const char *min_expand (MatchState *ms, const char *s,$/;"	f	file:
 mode	ldo.c	/^  const char *mode;$/;"	m	struct:SParser	file:
@@ -1980,7 +1980,7 @@ moveto	lapi.c	/^static void moveto (lua_State *L, TValue *fr, int idx) {$/;"	f	f
 mt	lstate.h	/^  struct Table *mt[LUA_NUMTAGS];  \/* metatables for basic types *\/$/;"	m	struct:global_State	typeref:struct:global_State::Table
 n	lauxlib.c	/^  int n;  \/* number of pre-read characters *\/$/;"	m	struct:LoadF	file:
 n	lauxlib.h	/^  size_t n;  \/* number of characters in buffer *\/$/;"	m	struct:luaL_Buffer
-n	lparser.h	/^    int n;$/;"	m	struct:Dyndata::__anon17
+n	lparser.h	/^    int n;$/;"	m	struct:Dyndata::__anon13
 n	lparser.h	/^  int n;  \/* number of entries in use *\/$/;"	m	struct:Labellist
 n	lzio.h	/^  size_t n;			\/* bytes still unread *\/$/;"	m	struct:Zio
 n	lzio.h	/^  size_t n;$/;"	m	struct:Mbuffer
@@ -1994,7 +1994,7 @@ name	ldo.c	/^  const char *name;$/;"	m	struct:SParser	file:
 name	lobject.h	/^  TString *name;  \/* upvalue name (for debug information) *\/$/;"	m	struct:Upvaldesc
 name	lparser.h	/^  TString *name;  \/* label identifier *\/$/;"	m	struct:Labeldesc
 name	lua.h	/^  const char *name;	\/* (n) *\/$/;"	m	struct:lua_Debug
-name	lundump.c	/^ const char* name;$/;"	m	struct:__anon10	file:
+name	lundump.c	/^ const char* name;$/;"	m	struct:__anon19	file:
 namewhat	lua.h	/^  const char *namewhat;	\/* (n) 'global', 'local', 'field', 'method' *\/$/;"	m	struct:lua_Debug
 need_value	lcode.c	/^static int need_value (FuncState *fs, int list) {$/;"	f	file:
 new_localvar	lparser.c	/^static void new_localvar (LexState *ls, TString *name) {$/;"	f	file:
@@ -2006,13 +2006,13 @@ newprefile	liolib.c	/^static LStream *newprefile (lua_State *L) {$/;"	f	file:
 newshrstr	lstring.c	/^static TString *newshrstr (lua_State *L, const char *str, size_t l,$/;"	f	file:
 newupvalue	lparser.c	/^static int newupvalue (FuncState *fs, TString *name, expdesc *v) {$/;"	f	file:
 next	llex.c	28;"	d	file:
-next	lobject.h	/^      struct UpVal *next;$/;"	m	struct:UpVal::__anon4::__anon5	typeref:struct:UpVal::__anon4::__anon5::UpVal
-next	lobject.h	/^    struct Node *next;  \/* for chaining *\/$/;"	m	struct:TKey::__anon6	typeref:struct:TKey::__anon6::Node
+next	lobject.h	/^      struct UpVal *next;$/;"	m	struct:UpVal::__anon5::__anon6	typeref:struct:UpVal::__anon5::__anon6::UpVal
+next	lobject.h	/^    struct Node *next;  \/* for chaining *\/$/;"	m	struct:TKey::__anon7	typeref:struct:TKey::__anon7::Node
 next	lstate.h	/^  struct CallInfo *previous, *next;  \/* dynamic call link *\/$/;"	m	struct:CallInfo	typeref:struct:CallInfo::
 next_ci	ldo.c	290;"	d	file:
 nh	lparser.c	/^  int nh;  \/* total number of `record' elements *\/$/;"	m	struct:ConsControl	file:
 nilK	lcode.c	/^static int nilK (FuncState *fs) {$/;"	f	file:
-nk	lobject.h	/^  } nk;$/;"	m	union:TKey	typeref:struct:TKey::__anon6
+nk	lobject.h	/^  } nk;$/;"	m	union:TKey	typeref:struct:TKey::__anon7
 nk	lparser.h	/^  int nk;  \/* number of elements in `k' *\/$/;"	m	struct:FuncState
 nlocvars	lparser.h	/^  short nlocvars;  \/* number of elements in 'f->locvars' *\/$/;"	m	struct:FuncState
 nny	lstate.h	/^  unsigned short nny;  \/* number of non-yieldable calls in stack *\/$/;"	m	struct:lua_State
@@ -2039,12 +2039,12 @@ numusehash	ltable.c	/^static int numusehash (const Table *t, int *nums, int *pna
 nups	lparser.h	/^  lu_byte nups;  \/* number of upvalues *\/$/;"	m	struct:FuncState
 nups	lua.h	/^  unsigned char nups;	\/* (u) number of upvalues *\/$/;"	m	struct:lua_Debug
 nuse	lstate.h	/^  lu_int32 nuse;  \/* number of elements *\/$/;"	m	struct:stringtable
-nval	lparser.h	/^    lua_Number nval;  \/* for VKNUM *\/$/;"	m	union:expdesc::__anon15
+nval	lparser.h	/^    lua_Number nval;  \/* for VKNUM *\/$/;"	m	union:expdesc::__anon11
 nvalue	lobject.h	153;"	d
 obj2gco	lstate.h	215;"	d
 objtypename	ltm.h	47;"	d
-old_allowhook	lstate.h	/^      lu_byte old_allowhook;$/;"	m	struct:CallInfo::__anon11::__anon13
-old_errfunc	lstate.h	/^      ptrdiff_t old_errfunc;$/;"	m	struct:CallInfo::__anon11::__anon13
+old_allowhook	lstate.h	/^      lu_byte old_allowhook;$/;"	m	struct:CallInfo::__anon14::__anon16
+old_errfunc	lstate.h	/^      ptrdiff_t old_errfunc;$/;"	m	struct:CallInfo::__anon14::__anon16
 oldpc	lstate.h	/^  const Instruction *oldpc;  \/* last pc traced *\/$/;"	m	struct:lua_State
 open_func	lparser.c	/^static void open_func (LexState *ls, FuncState *fs, BlockCnt *bl) {$/;"	f	file:
 opencheck	liolib.c	/^static void opencheck (lua_State *L, const char *fname, const char *mode) {$/;"	f	file:
@@ -2086,7 +2086,7 @@ pmain	luac.c	/^static int pmain(lua_State* L)$/;"	f	file:
 posrelat	lstrlib.c	/^static size_t posrelat (ptrdiff_t pos, size_t len) {$/;"	f	file:
 preinit_state	lstate.c	/^static void preinit_state (lua_State *L, global_State *g) {$/;"	f	file:
 preloadedlibs	linit.c	/^static const luaL_Reg preloadedlibs[] = {$/;"	v	file:
-prev	lobject.h	/^      struct UpVal *prev;$/;"	m	struct:UpVal::__anon4::__anon5	typeref:struct:UpVal::__anon4::__anon5::UpVal
+prev	lobject.h	/^      struct UpVal *prev;$/;"	m	struct:UpVal::__anon5::__anon6	typeref:struct:UpVal::__anon5::__anon6::UpVal
 prev	lparser.c	/^  struct LHS_assign *prev;$/;"	m	struct:LHS_assign	typeref:struct:LHS_assign::LHS_assign	file:
 prev	lparser.h	/^  struct FuncState *prev;  \/* enclosing function *\/$/;"	m	struct:FuncState	typeref:struct:FuncState::FuncState
 previous	ldo.c	/^  struct lua_longjmp *previous;$/;"	m	struct:lua_longjmp	typeref:struct:lua_longjmp::lua_longjmp	file:
@@ -2095,7 +2095,7 @@ previous	lstate.h	/^  struct CallInfo *previous, *next;  \/* dynamic call link *
 primaryexp	lparser.c	/^static void primaryexp (LexState *ls, expdesc *v) {$/;"	f	file:
 print_usage	lua.c	/^static void print_usage (const char *badoption) {$/;"	f	file:
 print_version	lua.c	/^static void print_version (void) {$/;"	f	file:
-priority	lparser.c	/^} priority[] = {  \/* ORDER OPR *\/$/;"	v	typeref:struct:__anon7	file:
+priority	lparser.c	/^} priority[] = {  \/* ORDER OPR *\/$/;"	v	typeref:struct:__anon9	file:
 progname	lua.c	/^static const char *progname = LUA_PROGNAME;$/;"	v	file:
 progname	luac.c	/^static const char* progname=PROGNAME;	\/* actual program name *\/$/;"	v	file:
 propagateall	lgc.c	/^static void propagateall (global_State *g) {$/;"	f	file:
@@ -2111,7 +2111,7 @@ pushline	lua.c	/^static int pushline (lua_State *L, int firstline) {$/;"	f	file:
 pushnexttemplate	loadlib.c	/^static const char *pushnexttemplate (lua_State *L, const char *path) {$/;"	f	file:
 pushstr	lobject.c	/^static void pushstr (lua_State *L, const char *str, size_t l) {$/;"	f	file:
 pvalue	lobject.h	155;"	d
-r	llex.h	/^  lua_Number r;$/;"	m	union:__anon9
+r	llex.h	/^  lua_Number r;$/;"	m	union:__anon2
 rawgco2ts	lstate.h	200;"	d
 rawgco2u	lstate.h	203;"	d
 rawtsvalue	lobject.h	156;"	d
@@ -2150,7 +2150,7 @@ resume	ldo.c	/^static void resume (lua_State *L, void *ud) {$/;"	f	file:
 resume_error	ldo.c	/^static l_noret resume_error (lua_State *L, const char *msg, StkId firstArg) {$/;"	f	file:
 retraversegrays	lgc.c	/^static void retraversegrays (global_State *g) {$/;"	f	file:
 retstat	lparser.c	/^static void retstat (LexState *ls) {$/;"	f	file:
-right	lparser.c	/^  lu_byte right; \/* right priority *\/$/;"	m	struct:__anon7	file:
+right	lparser.c	/^  lu_byte right; \/* right priority *\/$/;"	m	struct:__anon9	file:
 righttt	lobject.h	177;"	d
 rttype	lobject.h	118;"	d
 rttype	lobject.h	342;"	d
@@ -2159,7 +2159,7 @@ runargs	lua.c	/^static int runargs (lua_State *L, char **argv, int n) {$/;"	f	fi
 s	lauxlib.c	/^  const char *s;$/;"	m	struct:LoadS	file:
 save	llex.c	/^static void save (LexState *ls, int c) {$/;"	f	file:
 save_and_next	llex.c	46;"	d	file:
-savedpc	lstate.h	/^      const Instruction *savedpc;$/;"	m	struct:CallInfo::__anon11::__anon12
+savedpc	lstate.h	/^      const Instruction *savedpc;$/;"	m	struct:CallInfo::__anon14::__anon15
 savestack	ldo.h	22;"	d
 scanformat	lstrlib.c	/^static const char *scanformat (lua_State *L, const char *strfrmt, char *form) {$/;"	f	file:
 searcher_C	loadlib.c	/^static int searcher_C (lua_State *L) {$/;"	f	file:
@@ -2228,7 +2228,7 @@ singlevar	lparser.c	/^static void singlevar (LexState *ls, expdesc *var) {$/;"	f
 singlevaraux	lparser.c	/^static int singlevaraux (FuncState *fs, TString *n, expdesc *var, int base) {$/;"	f	file:
 size	lauxlib.c	/^  size_t size;$/;"	m	struct:LoadS	file:
 size	lauxlib.h	/^  size_t size;  \/* buffer size *\/$/;"	m	struct:luaL_Buffer
-size	lparser.h	/^    int size;$/;"	m	struct:Dyndata::__anon17
+size	lparser.h	/^    int size;$/;"	m	struct:Dyndata::__anon13
 size	lparser.h	/^  int size;  \/* array size *\/$/;"	m	struct:Labellist
 size	lstate.h	/^  int size;$/;"	m	struct:stringtable
 sizeCclosure	lfunc.h	14;"	d
@@ -2264,8 +2264,8 @@ startpc	lobject.h	/^  int startpc;  \/* first point where variable is active *\/
 statement	lparser.c	/^static void statement (LexState *ls) {$/;"	f	file:
 statlist	lparser.c	/^static void statlist (LexState *ls) {$/;"	f	file:
 status	ldo.c	/^  volatile int status;  \/* error code *\/$/;"	m	struct:lua_longjmp	file:
-status	ldump.c	/^ int status;$/;"	m	struct:__anon18	file:
-status	lstate.h	/^      lu_byte status;$/;"	m	struct:CallInfo::__anon11::__anon13
+status	ldump.c	/^ int status;$/;"	m	struct:__anon1	file:
+status	lstate.h	/^      lu_byte status;$/;"	m	struct:CallInfo::__anon14::__anon16
 status	lstate.h	/^  lu_byte status;$/;"	m	struct:lua_State
 str_byte	lstrlib.c	/^static int str_byte (lua_State *L) {$/;"	f	file:
 str_char	lstrlib.c	/^static int str_char (lua_State *L) {$/;"	f	file:
@@ -2284,7 +2284,7 @@ str_sub	lstrlib.c	/^static int str_sub (lua_State *L) {$/;"	f	file:
 str_upper	lstrlib.c	/^static int str_upper (lua_State *L) {$/;"	f	file:
 stringtable	lstate.h	/^typedef struct stringtable {$/;"	s
 stringtable	lstate.h	/^} stringtable;$/;"	t	typeref:struct:stringtable
-strip	ldump.c	/^ int strip;$/;"	m	struct:__anon18	file:
+strip	ldump.c	/^ int strip;$/;"	m	struct:__anon1	file:
 stripping	luac.c	/^static int stripping=0;			\/* strip debug information? *\/$/;"	v	file:
 strlib	lstrlib.c	/^static const luaL_Reg strlib[] = {$/;"	v	file:
 strt	lstate.h	/^  stringtable strt;  \/* hash table for strings *\/$/;"	m	struct:global_State
@@ -2302,7 +2302,7 @@ sweepwholelist	lgc.c	690;"	d	file:
 syslib	loslib.c	/^static const luaL_Reg syslib[] = {$/;"	v	file:
 t	llex.h	/^  Token t;  \/* current token *\/$/;"	m	struct:LexState
 t	lparser.c	/^  expdesc *t;  \/* table descriptor *\/$/;"	m	struct:ConsControl	file:
-t	lparser.h	/^      lu_byte t;  \/* table (register or upvalue) *\/$/;"	m	struct:expdesc::__anon15::__anon16
+t	lparser.h	/^      lu_byte t;  \/* table (register or upvalue) *\/$/;"	m	struct:expdesc::__anon11::__anon12
 t	lparser.h	/^  int t;  \/* patch list of `exit when true' *\/$/;"	m	struct:expdesc
 tab_funcs	ltablib.c	/^static const luaL_Reg tab_funcs[] = {$/;"	v	file:
 tag2tt	lobject.h	340;"	d
@@ -2346,9 +2346,9 @@ tremove	ltablib.c	/^static int tremove (lua_State *L) {$/;"	f	file:
 trim	lbitlib.c	25;"	d	file:
 trydecpoint	llex.c	/^static void trydecpoint (LexState *ls, SemInfo *seminfo) {$/;"	f	file:
 tryfuncTM	ldo.c	/^static StkId tryfuncTM (lua_State *L, StkId func) {$/;"	f	file:
-ts	llex.h	/^  TString *ts;$/;"	m	union:__anon9
+ts	llex.h	/^  TString *ts;$/;"	m	union:__anon2
 ts	lstate.h	/^  union TString ts;$/;"	m	union:GCObject	typeref:union:GCObject::TString
-tsv	lobject.h	/^  } tsv;$/;"	m	union:TString	typeref:struct:TString::__anon2
+tsv	lobject.h	/^  } tsv;$/;"	m	union:TString	typeref:struct:TString::__anon3
 tsvalue	lobject.h	157;"	d
 tt_	lobject.h	308;"	d
 tt_	lobject.h	319;"	d
@@ -2380,10 +2380,10 @@ tvk	lobject.h	/^  TValue tvk;$/;"	m	union:TKey
 twoto	lobject.h	581;"	d
 txtToken	llex.c	/^static const char *txtToken (LexState *ls, int token) {$/;"	f	file:
 typeerror	lauxlib.c	/^static int typeerror (lua_State *L, int narg, const char *tname) {$/;"	f	file:
-u	lobject.h	/^  } u;$/;"	m	struct:UpVal	typeref:union:UpVal::__anon4
-u	lparser.h	/^  } u;$/;"	m	struct:expdesc	typeref:union:expdesc::__anon15
+u	lobject.h	/^  } u;$/;"	m	struct:UpVal	typeref:union:UpVal::__anon5
+u	lparser.h	/^  } u;$/;"	m	struct:expdesc	typeref:union:expdesc::__anon11
 u	lstate.h	/^  union Udata u;$/;"	m	union:GCObject	typeref:union:GCObject::Udata
-u	lstate.h	/^  } u;$/;"	m	struct:CallInfo	typeref:union:CallInfo::__anon11
+u	lstate.h	/^  } u;$/;"	m	struct:CallInfo	typeref:union:CallInfo::__anon14
 uchar	lstrlib.c	33;"	d	file:
 ud	lstate.h	/^  void *ud;         \/* auxiliary data to `frealloc' *\/$/;"	m	struct:global_State
 udata2finalize	lgc.c	/^static GCObject *udata2finalize (global_State *g) {$/;"	f	file:
@@ -2400,7 +2400,7 @@ upvals	lobject.h	/^  UpVal *upvals[1];  \/* list of upvalues *\/$/;"	m	struct:LC
 upvalue	lobject.h	/^  TValue upvalue[1];  \/* list of upvalues *\/$/;"	m	struct:CClosure
 upvalues	lobject.h	/^  Upvaldesc *upvalues;  \/* upvalue information *\/$/;"	m	struct:Proto
 usage	luac.c	/^static void usage(const char* message)$/;"	f	file:
-uv	lobject.h	/^  } uv;$/;"	m	union:Udata	typeref:struct:Udata::__anon3
+uv	lobject.h	/^  } uv;$/;"	m	union:Udata	typeref:struct:Udata::__anon4
 uv	lstate.h	/^  struct UpVal uv;$/;"	m	union:GCObject	typeref:struct:GCObject::UpVal
 uvalue	lobject.h	159;"	d
 uvhead	lstate.h	/^  UpVal uvhead;  \/* head of double-linked list of all open upvalues *\/$/;"	m	struct:global_State
@@ -2413,7 +2413,7 @@ val_	lobject.h	113;"	d
 val_	lobject.h	327;"	d
 val_	lobject.h	328;"	d
 valiswhite	lgc.h	117;"	d
-value	lobject.h	/^    TValue value;  \/* the value (when closed) *\/$/;"	m	union:UpVal::__anon4
+value	lobject.h	/^    TValue value;  \/* the value (when closed) *\/$/;"	m	union:UpVal::__anon5
 varname	lobject.h	/^  TString *varname;$/;"	m	struct:LocVar
 version	lstate.h	/^  const lua_Number *version;  \/* pointer to version number *\/$/;"	m	struct:global_State
 vkisinreg	lparser.h	38;"	d
@@ -2421,12 +2421,12 @@ vkisvar	lparser.h	37;"	d
 vmcase	lvm.c	531;"	d	file:
 vmcasenb	lvm.c	532;"	d	file:
 vmdispatch	lvm.c	530;"	d	file:
-vt	lparser.h	/^      lu_byte vt;  \/* whether 't' is register (VLOCAL) or upvalue (VUPVAL) *\/$/;"	m	struct:expdesc::__anon15::__anon16
+vt	lparser.h	/^      lu_byte vt;  \/* whether 't' is register (VLOCAL) or upvalue (VUPVAL) *\/$/;"	m	struct:expdesc::__anon11::__anon12
 weak	lstate.h	/^  GCObject *weak;  \/* list of tables with weak values *\/$/;"	m	struct:global_State
 what	lua.h	/^  const char *what;	\/* (S) 'Lua', 'C', 'main', 'tail' *\/$/;"	m	struct:lua_Debug
 whilestat	lparser.c	/^static void whilestat (LexState *ls, int line) {$/;"	f	file:
 white2gray	lgc.c	62;"	d	file:
-writer	ldump.c	/^ lua_Writer writer;$/;"	m	struct:__anon18	file:
+writer	ldump.c	/^ lua_Writer writer;$/;"	m	struct:__anon1	file:
 writer	lstrlib.c	/^static int writer (lua_State *L, const void* b, size_t size, void* B) {$/;"	f	file:
 writer	luac.c	/^static int writer(lua_State* L, const void* p, size_t size, void* u)$/;"	f	file:
 yindex	lparser.c	/^static void yindex (LexState *ls, expdesc *v) {$/;"	f	file:

@@ -636,18 +636,22 @@ static void checkmode (lua_State *L, const char *mode, const char *x) {
   }
 }
 
-
+//传入 lua_State和SParser之后进行解析
 static void f_parser (lua_State *L, void *ud) {
   int i;
   Closure *cl;
   struct SParser *p = cast(struct SParser *, ud);
+  //内部通过调用getF，获取到一个缓存到ZIO->data(LoadF)->buff中，并且计算ZIO->n的position
+  //同时返回第一个获取到的字符
   int c = zgetc(p->z);  /* read first character */
-  if (c == LUA_SIGNATURE[0]) {
+  if (c == LUA_SIGNATURE[0]) {//如果是\033开头的数据，则为二进制的文件
     checkmode(L, p->mode, "binary");
     cl = luaU_undump(L, p->z, &p->buff, p->name);
   }
-  else {
+  else {//否则为文本文件
     checkmode(L, p->mode, "text");
+	//传入参数为L,ZIO,Mbuffer,Dyndata,p->name为"@文件名称",c为第一个字符
+	//printf("luaY_parser函数的参数p->name为%s\n",p->name);
     cl = luaY_parser(L, p->z, &p->buff, &p->dyd, p->name, c);
   }
   lua_assert(cl->l.nupvalues == cl->l.p->sizeupvalues);
@@ -658,7 +662,7 @@ static void f_parser (lua_State *L, void *ud) {
   }
 }
 
-
+//对lua文件进行解析,name为"@文件名称",mode为上层传入的NULL
 int luaD_protectedparser (lua_State *L, ZIO *z, const char *name,
                                         const char *mode) {
   struct SParser p;
@@ -669,6 +673,9 @@ int luaD_protectedparser (lua_State *L, ZIO *z, const char *name,
   p.dyd.gt.arr = NULL; p.dyd.gt.size = 0;
   p.dyd.label.arr = NULL; p.dyd.label.size = 0;
   luaZ_initbuffer(L, &p.buff);
+  //savestack(L,L->top)是计算L->top - L->base ，即栈顶到栈底的高度,是栈中的元素个数
+  //printf("栈顶到栈底的高度为:%d - %d = %d\n",L->top,L->stack,L->top - L->stack);
+  //内部会运行ProtectedFunction - >  f_parser，运行的参数为L和p 
   status = luaD_pcall(L, f_parser, &p, savestack(L, L->top), L->errfunc);
   luaZ_freebuffer(L, &p.buff);
   luaM_freearray(L, p.dyd.actvar.arr, p.dyd.actvar.size);

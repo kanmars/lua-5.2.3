@@ -7,7 +7,7 @@
 
 #include <stdarg.h>
 #include <string.h>
-
+#include <stdio.h>
 #define lapi_c
 #define LUA_CORE
 
@@ -977,14 +977,16 @@ LUA_API int lua_pcallk (lua_State *L, int nargs, int nresults, int errfunc,
 
 //加载一个 Lua chunk 。 如果没有错误， lua_load 把一个编译好的 chunk 
 //作为一个 Lua 函数压入堆栈。 否则，压入出错信息。
+//data为LoadF,reader 为getF
 LUA_API int lua_load (lua_State *L, lua_Reader reader, void *data,
                       const char *chunkname, const char *mode) {
   ZIO z;
   int status;
   lua_lock(L);
+  // printf("chunkName %s\r\n",chunkname); 测试发现，此处为 “@文件名称”
   if (!chunkname) chunkname = "?";
-  luaZ_init(L, &z, reader, data);
-  status = luaD_protectedparser(L, &z, chunkname, mode);
+  luaZ_init(L, &z, reader, data);//初始化ZIO的五个属性
+  status = luaD_protectedparser(L, &z, chunkname, mode);//保护性解析
   if (status == LUA_OK) {  /* no errors? */
     LClosure *f = clLvalue(L->top - 1);  /* get newly created function */
     if (f->nupvalues == 1) {  /* does it have one upvalue? */
